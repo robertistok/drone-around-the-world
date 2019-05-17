@@ -1,10 +1,9 @@
 const path = require("path");
 const fs = require("fs");
 const axios = require("axios");
-const util = require("util");
 
 async function downloadMedia({ url, filename }) {
-  const imagePath = path.resolve(__dirname, "../posts", filename);
+  const imagePath = path.resolve(__dirname, "../data/posts", filename);
 
   const file = fs.createWriteStream(imagePath);
 

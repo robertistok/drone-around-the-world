@@ -22,7 +22,7 @@ const getPostData = async ({ shortcode }) => {
 
   return {
     imageUrl: post.display_url,
-    location: post.location.name || "Unknown",
+    location: (post.location && post.location.name) || "Unknown",
     caption: postCaption,
     username: post.owner.username
   };
