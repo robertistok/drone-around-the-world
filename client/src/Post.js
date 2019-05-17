@@ -6,18 +6,11 @@ const shell = remote.shell;
 // const fs = electron.remote.require("fs");
 // const ipcRenderer = electron.ipcRenderer;
 
-const Post = () => {
+const Post = ({ mediaPath, captionForFacebook }) => {
   return (
     <section>
-      <button
-        onClick={() =>
-          shell.showItemInFolder(
-            "/Users/robertistok/Documents/Programming/Personal/drone-around-the-world/posts/may_17_b.jpg"
-          )
-        }
-      >
-        Open in file
-      </button>
+      <button onClick={() => shell.showItemInFolder(mediaPath)}>Open in file</button>
+      <textarea value={captionForFacebook} rows={6} />
     </section>
   );
 };
