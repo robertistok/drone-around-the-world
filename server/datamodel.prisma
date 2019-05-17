@@ -1,0 +1,13 @@
+type User {
+  id: ID! @id @unique
+  name: String!
+}
+
+type Post {
+  id: ID! @id @unique
+  shortcode: String! @unique
+  mediaPath: String
+  captionForFacebook: String @default(value: "")
+  isPostedByCurator: Boolean @default(value: true)
+  isPublished: Boolean @default(value: false)
+}
