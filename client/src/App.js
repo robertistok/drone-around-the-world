@@ -1,26 +1,19 @@
 import React from "react";
+import { ApolloProvider } from "react-apollo";
+import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
 
-import Post from "./Post";
+import ListPosts from "./components/ListPosts";
 
-import db from "./data/db.json";
+import client from "./graphql";
 
-function App() {
-  // const posts = lowdb
-  //   .get("posts")
-  //   .isTrue("shortcode", true)
-  //   .value();
-
-  // console.log(posts);
-
+const App = () => {
   return (
-    <div className="App">
-      {Object.values(db.posts)
-        .filter(post => post.mediaPath)
-        .map(post => (
-          <Post key={post.shortcode} {...post} />
-        ))}
-    </div>
+    <ApolloProvider client={client}>
+      <ApolloHooksProvider client={client}>
+        <ListPosts />
+      </ApolloHooksProvider>
+    </ApolloProvider>
   );
-}
+};
 
 export default App;
