@@ -1,0 +1,6 @@
+endpoint: https://eu1.prisma.sh/robertistok94-3a0a6e/drone-around-the-world/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: graphql-schema
+    output: ./src/generated/schema.graphql
