@@ -8,11 +8,6 @@
   },
   "keywords": [],
   "license": "ISC",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "lowdb": "^1.0.0",
-    "moment": "^2.24.0"
-  },
   "devDependencies": {
     "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",

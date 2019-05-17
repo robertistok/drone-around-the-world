@@ -32,5 +32,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # data
-/posts
+server/src/data/posts
 # /src/database/db.json
