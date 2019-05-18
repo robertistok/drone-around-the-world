@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Fab from "@material-ui/core/Fab";
@@ -28,19 +28,13 @@ const UPDATE_POST_MUTATION = gql`
 
 const Post = ({ mediaPath, captionForFacebook, id, isPublished }) => {
   const updatePost = useMutation(UPDATE_POST_MUTATION);
-  const [inputState, setInputState] = useState({ captionForFacebook, isPublished });
 
   const handleInputChange = event => {
     event.persist();
 
-    const { name, value, checked } = event.target;
-    const newInputState = { [name]: value || checked };
-
     updatePost({
-      variables: { id, ...newInputState }
+      variables: { id, [event.target.name]: event.target.value || event.target.checked }
     });
-
-    setInputState({ ...inputState, ...newInputState });
   };
 
   return (
@@ -60,17 +54,13 @@ const Post = ({ mediaPath, captionForFacebook, id, isPublished }) => {
           multiline
           margin="normal"
           fullWidth
-          value={inputState.captionForFacebook}
+          value={captionForFacebook}
           onChange={handleInputChange}
         />
       </Grid>
 
       <Grid item xs={1}>
-        <Checkbox
-          name="isPublished"
-          checked={inputState.isPublished}
-          onChange={handleInputChange}
-        />
+        <Checkbox name="isPublished" checked={isPublished} onChange={handleInputChange} />
       </Grid>
     </Grid>
   );
